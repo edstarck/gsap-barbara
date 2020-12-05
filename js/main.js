@@ -99,9 +99,45 @@ function initHeaderTilt() {
   document.querySelector('header').addEventListener('mousemove', moveImages);
 }
 
+function createHoverReveal(e) {
+  const enter = e.type === 'mouseenter';
+  const leave = e.type === 'mouseleave';
+
+  const { imageBlock, mask } = e.target;
+
+  let tl = gsap.timeline({ defaults: { duration: 0.7, ease: 'Power4.out' } });
+
+  if (enter) {
+    tl.to([mask, imageBlock], { yPercent: 0 });
+  } else if (leave) {
+    tl.to(mask, { yPercent: 100 }).to(imageBlock, { yPercent: -102 }, 0);
+  }
+
+  return tl;
+}
+
+function initHoverReveal() {
+  const sections = [...document.querySelectorAll('.rg__column')];
+
+  sections.forEach((section) => {
+    // get components for animation
+    section.imageBlock = section.querySelector('.rg__image');
+    section.mask = section.querySelector('.rg__image--mask');
+
+    // reset initial position
+    gsap.set(section.imageBlock, { yPercent: -102 });
+    gsap.set(section.mask, { yPercent: 100 });
+
+    // add event liseners to each section
+    section.addEventListener('mouseenter', createHoverReveal);
+    section.addEventListener('mouseleave', createHoverReveal);
+  });
+}
+
 function init() {
   initNavigation();
   initHeaderTilt();
+  initHoverReveal();
 }
 
 window.addEventListener('load', function () {
