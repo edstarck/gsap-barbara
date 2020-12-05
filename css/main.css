@@ -146,7 +146,7 @@ textarea {
  */
 .clearfix::before,
 .clearfix::after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 
@@ -163,7 +163,10 @@ textarea {
   /* Style adjustments for viewports that meet the condition */
 }
 
-@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
@@ -180,7 +183,7 @@ textarea {
     color: #000 !important;
     /* Black prints faster */
     -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
     text-shadow: none !important;
   }
   a,
@@ -188,18 +191,18 @@ textarea {
     text-decoration: underline;
   }
   a[href]::after {
-    content: " (" attr(href) ")";
+    content: ' (' attr(href) ')';
   }
   abbr[title]::after {
-    content: " (" attr(title) ")";
+    content: ' (' attr(title) ')';
   }
   /*
    * Don't show links that are fragment identifiers,
    * or use the `javascript:` pseudo protocol
    */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
+  a[href^='#']::after,
+  a[href^='javascript:']::after {
+    content: '';
   }
   pre {
     white-space: pre-wrap !important;
@@ -231,4 +234,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-/*# sourceMappingURL=main.css.map */
